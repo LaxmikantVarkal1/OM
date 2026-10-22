@@ -20,17 +20,31 @@ import {
 
 export function BabyInvitationCard({ onOpenRsvp }) {
   const [copiedAddress, setCopiedAddress] = useState(false);
-  const [timeLeft, setTimeLeft] = useState({ days: 24, hours: 8, minutes: 45, seconds: 12 });
+
+  // Dynamic real-time countdown to Sunday, 1st November 2026, 11:30 AM IST
+  const calculateTimeLeft = () => {
+    const targetDate = new Date('2026-11-01T11:30:00+05:30').getTime();
+    const now = new Date().getTime();
+    const difference = targetDate - now;
+
+    if (difference <= 0) {
+      return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+    }
+
+    return {
+      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+      minutes: Math.floor((difference / 1000 / 60) % 60),
+      seconds: Math.floor((difference / 1000) % 60),
+    };
+  };
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft);
 
   useEffect(() => {
+    setTimeLeft(calculateTimeLeft());
     const timer = setInterval(() => {
-      setTimeLeft((prev) => {
-        if (prev.seconds > 0) return { ...prev, seconds: prev.seconds - 1 };
-        if (prev.minutes > 0) return { ...prev, minutes: 59, seconds: 59 };
-        if (prev.hours > 0) return { ...prev, hours: prev.hours - 1, minutes: 59, seconds: 59 };
-        if (prev.days > 0) return { ...prev, days: prev.days - 1, hours: 23, minutes: 59, seconds: 59 };
-        return prev;
-      });
+      setTimeLeft(calculateTimeLeft());
     }, 1000);
     return () => clearInterval(timer);
   }, []);
@@ -44,7 +58,7 @@ export function BabyInvitationCard({ onOpenRsvp }) {
   const handleWhatsAppShare = () => {
     const text = encodeURIComponent(
       `👶 Warm Invitation to our Baby's Naamkaran & Cradle Ceremony (नामकरण सोहळा)!\n\n` +
-      `📅 Date: Sunday, 15th November 2026 | 11:30 AM Onwards\n` +
+      `📅 Date: Sunday, 1st November 2026 | 11:30 AM Onwards\n` +
       `🏛️ Venue: Venkateshwara MultiPurpose Hall, Solapur\n\n` +
       `📍 Google Maps Location:\n${VENUE_DATA.googleMapsUrl}\n\n` +
       `We look forward to your gracious presence and blessings! 🙏`
@@ -58,7 +72,7 @@ export function BabyInvitationCard({ onOpenRsvp }) {
       "Auspicious Baby Naming & Cradle Ceremony followed by festive Mahaprasad Lunch at Venkateshwara MultiPurpose Hall."
     );
     const location = encodeURIComponent(VENUE_DATA.fullAddress);
-    const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=20261115T060000Z/20261115T103000Z`;
+    const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=20261101T060000Z/20261101T103000Z`;
     window.open(gCalUrl, '_blank');
   };
 
@@ -192,7 +206,7 @@ export function BabyInvitationCard({ onOpenRsvp }) {
                   <div className="flex items-center gap-3">
                     <Calendar className="w-5 h-5 text-[#7A283C] shrink-0" />
                     <span className="text-sm text-[#5C4549]">
-                      Sunday, 15th November 2026
+                      Sunday, 1st November 2026
                     </span>
                   </div>
                   <div className="flex items-center gap-3 mt-3">
