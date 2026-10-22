@@ -135,67 +135,91 @@ export function BabyInvitationCard({ onOpenRsvp }) {
               <span className="inline-block px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-widest bg-pink-100/90 text-[#9F1239]">
                 Joyous Celebration
               </span>
-              <h1 className="text-2xl sm:text-3xl lg:text-[32px] font-extrabold tracking-tight text-[#541224] pt-1">
-                NAAMKARAN CEREMONY
-              </h1>
-              <p className="text-sm sm:text-base font-semibold text-[#831843]">
-                & CRADLE CEREMONY (बारसे / पाळणा सोहळा)
-              </p>
+
               <p className="text-xs sm:text-sm text-stone-600 max-w-sm mx-auto pt-1 leading-relaxed">
                 "A brand new miracle has arrived to fill our lives with boundless love, laughter & light."
               </p>
             </div>
 
-            {/* Countdown Timer in clean white rounded tiles */}
-            <div className="w-full max-w-md p-3.5 sm:p-4 rounded-2xl bg-white/90 backdrop-blur-xs border border-pink-200/60 shadow-sm">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-[#831843] block mb-2">
-                Countdown to the Auspicious Ceremony:
-              </span>
-              <div className="grid grid-cols-4 gap-2 text-center">
-                <div className="px-2 py-2 rounded-xl bg-[#FFF8FA] border border-pink-200/70 shadow-2xs">
-                  <span className="text-lg font-bold text-[#831843] block">{timeLeft.days}</span>
-                  <span className="text-[10px] font-medium uppercase tracking-wider text-[#9F1239]">Days</span>
+            {/* ================= EXACT STYLED COUNTDOWN CARD ================= */}
+            <div className="w-full max-w-md bg-white p-5 sm:p-6 border border-[#EFE5E0] shadow-2xs text-left">
+              <div className="flex items-center gap-2">
+                <Clock className="w-4 h-4 text-[#7A283C] shrink-0" />
+                <span className="text-xs font-bold uppercase tracking-wider text-[#7A283C]">
+                  COUNTDOWN TO CEREMONY
+                </span>
+              </div>
+
+              {/* 4 Clean Countdown Metric Tiles */}
+              <div className="grid grid-cols-4 gap-2.5 mt-4 text-center">
+                <div className="py-3 px-1.5 bg-[#FAF6F3] border border-[#EFE5E0]">
+                  <span className="text-xl sm:text-2xl font-bold text-[#2D1E20] block leading-none">
+                    {timeLeft.days}
+                  </span>
+                  <span className="text-[10px] sm:text-xs font-medium uppercase tracking-wider text-[#5C4549] mt-1.5 block">
+                    Days
+                  </span>
                 </div>
-                <div className="px-2 py-2 rounded-xl bg-[#FFF8FA] border border-pink-200/70 shadow-2xs">
-                  <span className="text-lg font-bold text-[#831843] block">{timeLeft.hours}</span>
-                  <span className="text-[10px] font-medium uppercase tracking-wider text-[#9F1239]">Hours</span>
+                <div className="py-3 px-1.5 bg-[#FAF6F3] border border-[#EFE5E0]">
+                  <span className="text-xl sm:text-2xl font-bold text-[#2D1E20] block leading-none">
+                    {timeLeft.hours}
+                  </span>
+                  <span className="text-[10px] sm:text-xs font-medium uppercase tracking-wider text-[#5C4549] mt-1.5 block">
+                    Hours
+                  </span>
                 </div>
-                <div className="px-2 py-2 rounded-xl bg-[#FFF8FA] border border-pink-200/70 shadow-2xs">
-                  <span className="text-lg font-bold text-[#831843] block">{timeLeft.minutes}</span>
-                  <span className="text-[10px] font-medium uppercase tracking-wider text-[#9F1239]">Mins</span>
+                <div className="py-3 px-1.5 bg-[#FAF6F3] border border-[#EFE5E0]">
+                  <span className="text-xl sm:text-2xl font-bold text-[#2D1E20] block leading-none">
+                    {timeLeft.minutes}
+                  </span>
+                  <span className="text-[10px] sm:text-xs font-medium uppercase tracking-wider text-[#5C4549] mt-1.5 block">
+                    Mins
+                  </span>
                 </div>
-                <div className="px-2 py-2 rounded-xl bg-[#FFF8FA] border border-pink-200/70 shadow-2xs">
-                  <span className="text-lg font-bold text-[#831843] block">{timeLeft.seconds}</span>
-                  <span className="text-[10px] font-medium uppercase tracking-wider text-[#9F1239]">Secs</span>
+                <div className="py-3 px-1.5 bg-[#FAF6F3] border border-[#EFE5E0]">
+                  <span className="text-xl sm:text-2xl font-bold text-[#2D1E20] block leading-none">
+                    {timeLeft.seconds}
+                  </span>
+                  <span className="text-[10px] sm:text-xs font-medium uppercase tracking-wider text-[#5C4549] mt-1.5 block">
+                    Secs
+                  </span>
                 </div>
               </div>
-            </div>
 
-            {/* Action Buttons: RSVP & WhatsApp */}
-            <div className="w-full max-w-md flex flex-col sm:flex-row gap-2.5 pt-1">
-              <button
-                onClick={onOpenRsvp}
-                className="flex-1 py-3 px-5 rounded-full bg-[#E11D48] hover:bg-[#BE123C] text-white font-semibold text-xs tracking-wide shadow-md shadow-pink-900/15 flex items-center justify-center gap-2 transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
-              >
-                <Heart className="w-4 h-4 fill-current text-pink-200" />
-                <span>Send Blessings & RSVP</span>
-              </button>
+              <div className=" pt-4">
+                {/* Card 1: Date & Auspicious Muhurat */}
+                <div className="bg-white shadow-2xs">
+                  <div className="flex items-center gap-3">
+                    <Calendar className="w-5 h-5 text-[#7A283C] shrink-0" />
+                    <span className="text-sm text-[#5C4549]">
+                      Sunday, 15th November 2026
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-3 mt-3">
+                    <Clock className="w-5 h-5 text-[#7A283C] shrink-0" />
+                    <span className="text-sm text-[#5C4549]">
+                      Auspicious Muhurat: 11:30 AM Onwards
+                    </span>
+                  </div>
+                  <button
+                    onClick={handleAddToCalendar}
+                    className="w-full mt-5 py-2.5 px-4 text-center text-sm font-semibold text-[#7A283C] bg-white border border-[#D9C7C0] hover:bg-stone-50 transition-colors cursor-pointer"
+                  >
+                    Add to Calendar
+                  </button>
+                </div>
 
-              <button
-                onClick={handleWhatsAppShare}
-                className="py-3 px-4 rounded-full bg-white hover:bg-pink-50 text-[#831843] font-semibold text-xs border border-pink-200/80 shadow-2xs flex items-center justify-center gap-2 transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
-                title="Share Invitation on WhatsApp"
-              >
-                <Share2 className="w-4 h-4 text-[#E11D48]" />
-                <span>Share</span>
-              </button>
+
+              </div>
+
+
             </div>
 
           </div>
         </div>
 
         {/* ================= COLUMN 2 (RIGHT): Beautifully Blended Family & Venue Card ================= */}
-        <div className="relative bg-gradient-to-br from-[#FFF7F0] via-[#FFEADA]/90 to-[#FFF3E8] rounded-[32px] sm:rounded-[36px] p-5 sm:p-7 flex flex-col justify-between overflow-hidden shadow-lg shadow-orange-900/5 border border-orange-100/90 transition-all duration-300 hover:shadow-xl">
+        <div className="relative  rounded-[28px] sm:rounded-[32px] p-5 sm:p-6 flex flex-col justify-between overflow-hidden  transition-all duration-300">
 
 
 
@@ -210,87 +234,32 @@ export function BabyInvitationCard({ onOpenRsvp }) {
           </div>
 
           {/* Content (Elegantly Structured) */}
-          <div className="relative z-10 flex flex-col justify-between h-full space-y-4">
+          <div className="relative z-10 flex flex-col justify-between h-full space-y-3">
+            {/* ================= NAAMKARAN CEREMONY HEADER WITH GRADIENT UI DESIGN ================= */}
+            <div className="relative w-full rounded-2xl bg-gradient-to-r  text-center overflow-hidden">
+              {/* Subtle Ambient Gradient Aura */}
+              <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-48 h-20 bg-gradient-to-r from-rose-300/20 via-amber-300/30 to-orange-300/20 blur-xl pointer-events-none" />
 
-            {/* Header: Auspicious Muhurat Pill Banner & Date */}
-            <div className="flex flex-col items-center sm:items-start space-y-2">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/85 backdrop-blur-xs border border-orange-200/70 shadow-2xs mx-auto sm:mx-0">
-                <Calendar className="w-3.5 h-3.5 text-[#EA580C]" />
-                <span className="text-xs font-semibold text-[#7C2D12] tracking-wider uppercase">
-                  Auspicious Muhurat & Venue
+              {/* Top Auspicious Tag */}
+              <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-gradient-to-r from-rose-100/80 to-amber-100/80 border border-rose-200/50 mb-2">
+                <Sparkles className="w-3 h-3 text-[#B45309]" />
+                <span className="text-[14px] font-bold uppercase tracking-widest text-[#7A283C]">
+                  NAAMKARAN CEREMONY
                 </span>
+                <Sparkles className="w-3 h-3 text-[#B45309]" />
               </div>
 
-              {/* Date & Time Container */}
-              <div className="w-full p-3 sm:p-3.5 rounded-2xl bg-white/95 backdrop-blur-xs border border-orange-100 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-2.5 text-center sm:text-left">
-                <div>
-                  <div className="flex items-center justify-center sm:justify-start gap-2 text-[#7C2D12] font-bold text-sm sm:text-base">
-                    <Calendar className="w-4 h-4 text-[#EA580C]" />
-                    <span>Sunday, 15th November 2026</span>
-                  </div>
-                  <div className="flex items-center justify-center sm:justify-start gap-2 text-xs text-[#9A3412] font-semibold mt-0.5">
-                    <Clock className="w-3.5 h-3.5 text-[#EA580C]" />
-                    <span>Auspicious Muhurat: 11:30 AM Onwards</span>
-                  </div>
-                </div>
 
-                <button
-                  onClick={handleAddToCalendar}
-                  className="px-3.5 py-1.5 rounded-full bg-[#FFEADA] hover:bg-[#FED7AA] text-[#7C2D12] font-semibold text-xs border border-orange-200/80 flex items-center gap-1.5 transition-colors cursor-pointer shrink-0"
-                >
-                  <CalendarPlus className="w-3.5 h-3.5 text-[#EA580C]" />
-                  <span>Add to Calendar</span>
-                </button>
+
+              {/* Decorative Subtle Line */}
+              <div className="flex items-center justify-center gap-2 mt-2.5 opacity-80">
+                <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#7A283C]/40" />
+                <span className="text-[10px] text-[#7A283C] font-semibold">ॐ</span>
+                <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-[#7A283C]/40" />
               </div>
             </div>
 
-            {/* Google-styled Venue Card */}
-            <div className="p-3 sm:p-3.5 rounded-2xl bg-white/95 border border-orange-100 shadow-sm space-y-2">
-              <div className="flex items-start justify-between gap-2.5">
-                <div className="flex items-start gap-2.5">
-                  <div className="p-2 rounded-xl bg-[#FFEADA] text-[#EA580C] shrink-0 mt-0.5">
-                    <MapPin className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-[#EA580C] block">
-                      Ceremony Venue
-                    </span>
-                    <h4 className="text-sm sm:text-base font-bold text-[#5C2817] leading-snug">
-                      {VENUE_DATA.name}
-                    </h4>
 
-                    <p className="text-[11px] text-stone-600 mt-0.5 leading-relaxed">
-                      {VENUE_DATA.fullAddress}
-                    </p>
-                  </div>
-                </div>
-
-
-              </div>
-
-              {/* Navigation Action Buttons */}
-              <div className="pt-3 border-t border-orange-100 flex flex-wrap gap-2">
-                <a
-                  href={VENUE_DATA.directionsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 min-w-[120px] py-2 px-3.5 rounded-full bg-[#EA580C] hover:bg-[#C2410C] text-white font-medium text-xs flex items-center justify-center gap-1.5 transition-all shadow-2xs hover:shadow-xs"
-                >
-                  <Navigation className="w-3.5 h-3.5 fill-current" />
-                  <span>Get GPS Route</span>
-                </a>
-
-                <a
-                  href={VENUE_DATA.googleMapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="py-2 px-3.5 rounded-full bg-[#FFEADA] hover:bg-[#FED7AA] text-[#7C2D12] font-medium text-xs flex items-center justify-center gap-1.5 border border-orange-200 transition-colors"
-                >
-                  <ExternalLink className="w-3.5 h-3.5 text-[#EA580C]" />
-                  <span>Open in Google Maps</span>
-                </a>
-              </div>
-            </div>
 
             {/* ================= NETFLIX-STYLE HERO BANNER WITH BOTTOM GRADIENT BLEND ================= */}
             <div className="relative w-full my-0.5 flex flex-col items-center justify-center">
@@ -310,13 +279,53 @@ export function BabyInvitationCard({ onOpenRsvp }) {
                 />
 
                 {/* Netflix-style bottom gradient overlay to smoothly melt into the card UI */}
-                <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#FFEADA] via-[#FFEADA]/70 to-transparent pointer-events-none" />
+                <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#F4ECE5] via-[#F4ECE5]/70 to-transparent pointer-events-none" />
 
                 {/* Floating Caption Tag on the gradient transition */}
                 <div className="absolute -bottom-1 inset-x-0 flex justify-center z-10">
                   <span className="px-3.5 py-1 rounded-full text-[11px] font-semibold text-[#831843] bg-white/90 backdrop-blur-xs border border-pink-200/70 shadow-2xs">
                     ✨ Blessed with Love, Cherished Forever ✨
                   </span>
+                </div>
+              </div>
+
+              {/* Card 2: Ceremony Venue & Actions */}
+              <div className="bg-white p-5 sm:p-6 border border-[#EFE5E0] shadow-2xs mt-5">
+                <div className="flex items-center gap-2">
+                  <MapPin className="w-4 h-4 text-[#7A283C] shrink-0" />
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#7A283C]">
+                    CEREMONY VENUE
+                  </span>
+                </div>
+
+                <h4 className="text-lg sm:text-xl font-bold text-[#2D1E20] mt-3">
+                  {VENUE_DATA.name}
+                </h4>
+
+                <p className="text-xs text-[#5C4549] mt-1 leading-relaxed">
+                  {VENUE_DATA.fullAddress}
+                </p>
+
+                <div className="my-5 border-t border-[#EFE5E0]" />
+
+                <div className="grid grid-cols-2 gap-3">
+                  <a
+                    href={VENUE_DATA.directionsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="py-2.5 px-3 text-center text-sm font-semibold text-white bg-[#7A283C] hover:bg-[#661E2E] transition-colors"
+                  >
+                    Get GPS Route
+                  </a>
+
+                  <a
+                    href={VENUE_DATA.googleMapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="py-2.5 px-3 text-center text-sm font-semibold text-[#7A283C] bg-white border border-[#D9C7C0] hover:bg-stone-50 transition-colors"
+                  >
+                    Open in Google Maps
+                  </a>
                 </div>
               </div>
             </div>
