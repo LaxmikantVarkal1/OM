@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+@theme {
+  --color-pastel-pink: #FDE8EF;
+  --color-pastel-peach: #FFEADA;
+  --color-warm-bg: #FAF7F2;
+  --color-berry-accent: #E11D48;
+  --color-peach-accent: #EA580C;
+
+  --font-unified: 'Poppins', sans-serif;
+}
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif !important;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #FAF7F2;
+    color: #44403C;
+    font-family: 'Poppins', sans-serif !important;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  #root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif !important;
+  }
+}
+
+/* Motion Animations */
+@keyframes ganeshaFloat {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    filter: drop-shadow(0 10px 15px rgba(244, 152, 184, 0.25));
+  }
+  50% {
+    transform: translateY(-6px) scale(1.02);
+    filter: drop-shadow(0 16px 20px rgba(225, 29, 72, 0.25));
+  }
+}
+
+.animate-ganesha {
+  animation: ganeshaFloat 3.8s ease-in-out infinite;
+}
+
+@keyframes divineAura {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.06);
+  }
+}
+
+.animate-aura {
+  animation: divineAura 3s ease-in-out infinite;
+}
+
+@keyframes diyaFlicker {
+  0%, 100% {
+    opacity: 0.85;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.06) translateY(-1px);
+  }
+}
+
+.animate-diya {
+  animation: diyaFlicker 1.8s ease-in-out infinite;
+}
+
+@keyframes swayToran {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(1.2deg);
+  }
+}
+
+.animate-sway {
+  animation: swayToran 4s ease-in-out infinite alternate;
+}
+
+@keyframes floatPetal {
+  0% {
+    transform: translateY(-20px) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.75;
+  }
+  80% {
+    opacity: 0.75;
+  }
+  100% {
+    transform: translateY(105vh) translateX(35px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.floating-petal {
+  position: absolute;
+  pointer-events: none;
+  animation: floatPetal 9s linear infinite;
+}
+
+@keyframes cardEntry {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-card-entry {
+  animation: cardEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF7F2;
+}
+::-webkit-scrollbar-thumb {
+  background: #FBA585;
+  border-radius: 4px;
+}
