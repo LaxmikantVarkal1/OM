@@ -147,6 +147,11 @@ export function BabyInvitationCard({ onOpenRsvp: _onOpenRsvp }) {
                 "A brand new miracle has arrived to fill our lives with boundless love, laughter & light."
               </p>
             </div>
+
+            {/* ================= INDIAN STYLE NAME REVEAL BANNER (BELOW CEREMONY VENUE) ================= */}
+            <NameRevealBanner
+              isCountdownZero={timeLeft.days === 0 && timeLeft.hours === 0 && timeLeft.minutes === 0 && timeLeft.seconds === 0}
+            />
             {/* Card 2: Ceremony Venue & Actions */}
             <div id="ceremony-venue-card" className=" p-5 sm:p-6 shadow-2xs mt-5 mb-5">
 
@@ -187,10 +192,7 @@ export function BabyInvitationCard({ onOpenRsvp: _onOpenRsvp }) {
               </div>
             </div>
 
-            {/* ================= INDIAN STYLE NAME REVEAL BANNER (BELOW CEREMONY VENUE) ================= */}
-            <NameRevealBanner
-              isCountdownZero={timeLeft.days === 0 && timeLeft.hours === 0 && timeLeft.minutes === 0 && timeLeft.seconds === 0}
-            />
+
 
           </div>
         </div>
