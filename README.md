@@ -1,6 +1,6 @@
-# React + Vite
+# Baby Naamkaran Ceremony Invitation
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Auspicious Baby Naming & Cradle Ceremony (नामकरण सोहळा) digital invitation card web application.
 
 Currently, two official plugins are available:
 

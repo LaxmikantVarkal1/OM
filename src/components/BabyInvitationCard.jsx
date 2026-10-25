@@ -3,23 +3,17 @@ import babyGaneshaImg from '../assets/baby-ganesha.png';
 import familyImg from '../assets/family.png';
 import { VENUE_DATA } from '../data/venueData';
 import { SakuraFlower, DaisyFlower } from './FloralMotifs';
+import { NameRevealBanner } from './NameRevealBanner';
 import {
   Calendar,
   Clock,
   MapPin,
-  Navigation,
-  ExternalLink,
-  Heart,
-  Share2,
   Sparkles,
-  Copy,
-  Check,
-  CalendarPlus,
   Flame
 } from 'lucide-react';
 
-export function BabyInvitationCard({ onOpenRsvp }) {
-  const [copiedAddress, setCopiedAddress] = useState(false);
+export function BabyInvitationCard({ onOpenRsvp: _onOpenRsvp }) {
+  const [_copiedAddress, setCopiedAddress] = useState(false);
 
   // Dynamic real-time countdown to Sunday, 1st November 2026, 11:30 AM IST
   const calculateTimeLeft = () => {
@@ -42,20 +36,19 @@ export function BabyInvitationCard({ onOpenRsvp }) {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft);
 
   useEffect(() => {
-    setTimeLeft(calculateTimeLeft());
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
     return () => clearInterval(timer);
   }, []);
 
-  const handleCopyAddress = () => {
+  const _handleCopyAddress = () => {
     navigator.clipboard.writeText(VENUE_DATA.fullAddress);
     setCopiedAddress(true);
     setTimeout(() => setCopiedAddress(false), 2000);
   };
 
-  const handleWhatsAppShare = () => {
+  const _handleWhatsAppShare = () => {
     const text = encodeURIComponent(
       `👶 Warm Invitation to our Baby's Naamkaran & Cradle Ceremony (नामकरण सोहळा)!\n\n` +
       `📅 Date: Sunday, 1st November 2026 | 11:30 AM Onwards\n` +
@@ -66,7 +59,7 @@ export function BabyInvitationCard({ onOpenRsvp }) {
     window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
   };
 
-  const handleAddToCalendar = () => {
+  const _handleAddToCalendar = () => {
     const title = encodeURIComponent("Baby Naamkaran & Cradle Ceremony");
     const details = encodeURIComponent(
       "Auspicious Baby Naming & Cradle Ceremony followed by festive Mahaprasad Lunch at Venkateshwara MultiPurpose Hall."
@@ -83,7 +76,7 @@ export function BabyInvitationCard({ onOpenRsvp }) {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-stretch animate-card-entry">
 
         {/* ================= COLUMN 1 (LEFT): Background-less Divine Ceremony Invitation ================= */}
-        <div className="relative p-4 sm:p-6 lg:p-7 flex flex-col justify-between overflow-hidden">
+        <div className="relative p-4 sm:p-2 lg:p-2 flex flex-col justify-between overflow-hidden">
 
           {/* Top-Left Corner: Solid Sakura Blossom Watermark Accent */}
           <div className="absolute top-1 left-1 pointer-events-none select-none z-0">
@@ -154,80 +147,50 @@ export function BabyInvitationCard({ onOpenRsvp }) {
                 "A brand new miracle has arrived to fill our lives with boundless love, laughter & light."
               </p>
             </div>
+            {/* Card 2: Ceremony Venue & Actions */}
+            <div id="ceremony-venue-card" className=" p-5 sm:p-6 shadow-2xs mt-5 mb-5">
 
-            {/* ================= EXACT STYLED COUNTDOWN CARD ================= */}
-            <div className="w-full max-w-md bg-white p-5 sm:p-6 border border-[#EFE5E0] shadow-2xs text-left">
-              <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4 text-[#7A283C] shrink-0" />
+              <div className="flex justify-start gap-2">
+                <MapPin className="w-4 h-4 text-[#7A283C] shrink-0" />
                 <span className="text-xs font-bold uppercase tracking-wider text-[#7A283C]">
-                  COUNTDOWN TO CEREMONY
+                  CEREMONY VENUE
                 </span>
               </div>
+              <h4 className="text-lg  text-start sm:text-xl font-bold text-[#2D1E20] mt-3">
+                {VENUE_DATA.name}
+              </h4>
 
-              {/* 4 Clean Countdown Metric Tiles */}
-              <div className="grid grid-cols-4 gap-2.5 mt-4 text-center">
-                <div className="py-3 px-1.5 bg-[#FAF6F3] border border-[#EFE5E0]">
-                  <span className="text-xl sm:text-2xl font-bold text-[#2D1E20] block leading-none">
-                    {timeLeft.days}
-                  </span>
-                  <span className="text-[10px] sm:text-xs font-medium uppercase tracking-wider text-[#5C4549] mt-1.5 block">
-                    Days
-                  </span>
-                </div>
-                <div className="py-3 px-1.5 bg-[#FAF6F3] border border-[#EFE5E0]">
-                  <span className="text-xl sm:text-2xl font-bold text-[#2D1E20] block leading-none">
-                    {timeLeft.hours}
-                  </span>
-                  <span className="text-[10px] sm:text-xs font-medium uppercase tracking-wider text-[#5C4549] mt-1.5 block">
-                    Hours
-                  </span>
-                </div>
-                <div className="py-3 px-1.5 bg-[#FAF6F3] border border-[#EFE5E0]">
-                  <span className="text-xl sm:text-2xl font-bold text-[#2D1E20] block leading-none">
-                    {timeLeft.minutes}
-                  </span>
-                  <span className="text-[10px] sm:text-xs font-medium uppercase tracking-wider text-[#5C4549] mt-1.5 block">
-                    Mins
-                  </span>
-                </div>
-                <div className="py-3 px-1.5 bg-[#FAF6F3] border border-[#EFE5E0]">
-                  <span className="text-xl sm:text-2xl font-bold text-[#2D1E20] block leading-none">
-                    {timeLeft.seconds}
-                  </span>
-                  <span className="text-[10px] sm:text-xs font-medium uppercase tracking-wider text-[#5C4549] mt-1.5 block">
-                    Secs
-                  </span>
-                </div>
+              <p className="text-xs text-start text-[#5C4549] mt-1 leading-relaxed">
+                {VENUE_DATA.fullAddress}
+              </p>
+
+              <div className="my-5 border-t border-[#EFE5E0]" />
+
+              <div className="grid grid-cols-2 gap-3">
+                <a
+                  href={VENUE_DATA.directionsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="py-2.5 px-3 place-content-center text-center text-sm font-semibold text-white bg-[#7A283C] hover:bg-[#661E2E] transition-colors"
+                >
+                  Get GPS Route
+                </a>
+
+                <a
+                  href={VENUE_DATA.googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="py-2.5 px-3 text-center text-sm font-semibold text-[#7A283C] bg-white border border-[#D9C7C0] hover:bg-stone-50 transition-colors"
+                >
+                  Open in Google Maps
+                </a>
               </div>
-
-              <div className=" pt-4">
-                {/* Card 1: Date & Auspicious Muhurat */}
-                <div className="bg-white shadow-2xs">
-                  <div className="flex items-center gap-3">
-                    <Calendar className="w-5 h-5 text-[#7A283C] shrink-0" />
-                    <span className="text-sm text-[#5C4549]">
-                      Sunday, 1st November 2026
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-3 mt-3">
-                    <Clock className="w-5 h-5 text-[#7A283C] shrink-0" />
-                    <span className="text-sm text-[#5C4549]">
-                      Auspicious Muhurat: 11:30 AM Onwards
-                    </span>
-                  </div>
-                  <button
-                    onClick={handleAddToCalendar}
-                    className="w-full mt-5 py-2.5 px-4 text-center text-sm font-semibold text-[#7A283C] bg-white border border-[#D9C7C0] hover:bg-stone-50 transition-colors cursor-pointer"
-                  >
-                    Add to Calendar
-                  </button>
-                </div>
-
-
-              </div>
-
-
             </div>
+
+            {/* ================= INDIAN STYLE NAME REVEAL BANNER (BELOW CEREMONY VENUE) ================= */}
+            <NameRevealBanner
+              isCountdownZero={timeLeft.days === 0 && timeLeft.hours === 0 && timeLeft.minutes === 0 && timeLeft.seconds === 0}
+            />
 
           </div>
         </div>
@@ -279,12 +242,84 @@ export function BabyInvitationCard({ onOpenRsvp }) {
             <div className="relative w-full my-0.5 flex flex-col items-center justify-center">
               {/* Soft warm radiant aura behind family */}
               <div className="absolute w-52 h-52 sm:w-60 sm:h-60 rounded-full bg-gradient-to-tr from-rose-200/40 via-amber-200/35 to-orange-200/40 blur-2xl pointer-events-none" />
+              {/* ================= EXACT STYLED COUNTDOWN CARD ================= */}
+              <div id="countdown-section" className="w-full max-w-md p-5 mb-10 sm:p-6 shadow-2xs text-left">
+                <div className="flex items-center gap-2">
+                  <Clock className="w-4 h-4 text-[#7A283C] shrink-0" />
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#7A283C]">
+                    COUNTDOWN TO CEREMONY
+                  </span>
+                </div>
 
+                {/* 4 Clean Countdown Metric Tiles */}
+                <div className="grid grid-cols-4 gap-2.5 mt-4 text-center">
+                  <div className="py-3 px-1.5 bg-[#FAF6F3] border border-[#EFE5E0]">
+                    <span className="text-xl sm:text-2xl font-bold text-[#2D1E20] block leading-none">
+                      {timeLeft.days}
+                    </span>
+                    <span className="text-[10px] sm:text-xs font-medium uppercase tracking-wider text-[#5C4549] mt-1.5 block">
+                      Days
+                    </span>
+                  </div>
+                  <div className="py-3 px-1.5 bg-[#FAF6F3] border border-[#EFE5E0]">
+                    <span className="text-xl sm:text-2xl font-bold text-[#2D1E20] block leading-none">
+                      {timeLeft.hours}
+                    </span>
+                    <span className="text-[10px] sm:text-xs font-medium uppercase tracking-wider text-[#5C4549] mt-1.5 block">
+                      Hours
+                    </span>
+                  </div>
+                  <div className="py-3 px-1.5 bg-[#FAF6F3] border border-[#EFE5E0]">
+                    <span className="text-xl sm:text-2xl font-bold text-[#2D1E20] block leading-none">
+                      {timeLeft.minutes}
+                    </span>
+                    <span className="text-[10px] sm:text-xs font-medium uppercase tracking-wider text-[#5C4549] mt-1.5 block">
+                      Mins
+                    </span>
+                  </div>
+                  <div className="py-3 px-1.5 bg-[#FAF6F3] border border-[#EFE5E0]">
+                    <span className="text-xl sm:text-2xl font-bold text-[#2D1E20] block leading-none">
+                      {timeLeft.seconds}
+                    </span>
+                    <span className="text-[10px] sm:text-xs font-medium uppercase tracking-wider text-[#5C4549] mt-1.5 block">
+                      Secs
+                    </span>
+                  </div>
+                </div>
+
+                <div className=" pt-4">
+                  {/* Card 1: Date & Auspicious Muhurat */}
+                  <div className="">
+                    <div className="flex items-center gap-3">
+                      <Calendar className="w-5 h-5 text-[#7A283C] shrink-0" />
+                      <span className="text-sm text-[#5C4549]">
+                        Sunday, 1st November 2026
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-3 mt-3">
+                      <Clock className="w-5 h-5 text-[#7A283C] shrink-0" />
+                      <span className="text-sm text-[#5C4549]">
+                        Auspicious Muhurat: 11:30 AM Onwards
+                      </span>
+                    </div>
+                    {/* <button
+                      onClick={handleAddToCalendar}
+                      className="w-full mt-5 py-2.5 px-4 text-center text-sm font-semibold text-[#7A283C] bg-white border border-[#D9C7C0] hover:bg-stone-50 transition-colors cursor-pointer"
+                    >
+                      Add to Calendar
+                    </button> */}
+                  </div>
+
+
+                </div>
+
+
+              </div>
               {/* Banner Container with bottom gradient blend */}
               <div className="relative w-full max-w-[270px] sm:max-w-[305px] mx-auto">
                 <img
                   src={familyImg}
-                  alt="Aarav with Parents"
+                  alt="Baby with Parents"
                   className="w-full h-auto object-contain select-none drop-shadow-sm"
                   style={{
                     WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 62%, rgba(0,0,0,0) 98%)',
@@ -303,45 +338,7 @@ export function BabyInvitationCard({ onOpenRsvp }) {
                 </div>
               </div>
 
-              {/* Card 2: Ceremony Venue & Actions */}
-              <div className="bg-white p-5 sm:p-6 border border-[#EFE5E0] shadow-2xs mt-5">
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-[#7A283C] shrink-0" />
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#7A283C]">
-                    CEREMONY VENUE
-                  </span>
-                </div>
 
-                <h4 className="text-lg sm:text-xl font-bold text-[#2D1E20] mt-3">
-                  {VENUE_DATA.name}
-                </h4>
-
-                <p className="text-xs text-[#5C4549] mt-1 leading-relaxed">
-                  {VENUE_DATA.fullAddress}
-                </p>
-
-                <div className="my-5 border-t border-[#EFE5E0]" />
-
-                <div className="grid grid-cols-2 gap-3">
-                  <a
-                    href={VENUE_DATA.directionsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="py-2.5 px-3 text-center text-sm font-semibold text-white bg-[#7A283C] hover:bg-[#661E2E] transition-colors"
-                  >
-                    Get GPS Route
-                  </a>
-
-                  <a
-                    href={VENUE_DATA.googleMapsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="py-2.5 px-3 text-center text-sm font-semibold text-[#7A283C] bg-white border border-[#D9C7C0] hover:bg-stone-50 transition-colors"
-                  >
-                    Open in Google Maps
-                  </a>
-                </div>
-              </div>
             </div>
 
 

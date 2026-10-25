@@ -129,6 +129,151 @@
   animation: cardEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* Indian Nameplate Fluid Gradient & Sparkler Animations */
+@keyframes fluidGradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-fluid-gradient {
+  background-size: 250% 250%;
+  animation: fluidGradientFlow 7s ease-in-out infinite;
+}
+
+@keyframes sparklerSpark {
+  0%, 100% {
+    transform: scale(0.65) rotate(0deg);
+    opacity: 0.35;
+    filter: drop-shadow(0 0 3px rgba(253, 230, 138, 0.6));
+  }
+  50% {
+    transform: scale(1.3) rotate(180deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.9)) drop-shadow(0 0 16px rgba(234, 88, 12, 0.7));
+  }
+}
+
+.animate-sparkler-spark {
+  animation: sparklerSpark 2s ease-in-out infinite;
+}
+
+@keyframes plateShimmer {
+  0% {
+    transform: translateX(-150%) skewX(-20deg);
+  }
+  35%, 100% {
+    transform: translateX(250%) skewX(-20deg);
+  }
+}
+
+.animate-plate-shimmer {
+  animation: plateShimmer 3.4s ease-in-out infinite;
+}
+
+@keyframes floatSparklerParticle {
+  0% {
+    transform: translateY(12px) translateX(0) scale(0.4);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.95;
+    transform: translateY(-4px) translateX(5px) scale(1.05);
+  }
+  70% {
+    opacity: 0.8;
+    transform: translateY(-16px) translateX(-4px) scale(0.85);
+  }
+  100% {
+    transform: translateY(-28px) translateX(3px) scale(0.3);
+    opacity: 0;
+  }
+}
+
+.animate-sparkle-float {
+  animation: floatSparklerParticle 2.5s ease-out infinite;
+}
+
+@keyframes bellSwing {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(8deg);
+  }
+  75% {
+    transform: rotate(-8deg);
+  }
+}
+
+.animate-bell-swing {
+  transform-origin: top center;
+  animation: bellSwing 2.4s ease-in-out infinite;
+}
+
+@keyframes goldenPlateGlow {
+  0%, 100% {
+    box-shadow: 0 4px 20px -2px rgba(180, 83, 9, 0.25), 0 0 12px rgba(245, 158, 11, 0.15);
+  }
+  50% {
+    box-shadow: 0 8px 30px 2px rgba(180, 83, 9, 0.45), 0 0 25px rgba(245, 158, 11, 0.35);
+  }
+}
+
+@keyframes confettiRain {
+  0% {
+    transform: translateY(-10px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(140px) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.animate-confetti {
+  animation: confettiRain 2.4s ease-out infinite;
+}
+
+@keyframes nameRevealPop {
+  0% {
+    transform: scale(0.65);
+    opacity: 0;
+    filter: blur(4px);
+  }
+  60% {
+    transform: scale(1.1);
+    filter: blur(0);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-reveal-pop {
+  animation: nameRevealPop 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes celebrationPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.4), 0 0 30px rgba(225, 29, 72, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(245, 158, 11, 0.8), 0 0 50px rgba(225, 29, 72, 0.6);
+  }
+}
+
+.animate-celebration-pulse {
+  animation: celebrationPulse 2s ease-in-out infinite;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 7px;
