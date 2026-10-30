@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { X, Heart, Send, Check } from 'lucide-react';
 
-export function RsvpModal({ isOpen, onClose, babyName }) {
-  const [guestName, setGuestName] = useState('');
+export function RsvpModal({ isOpen, onClose, babyName, initialGuestName = '' }) {
+  const [guestName, setGuestName] = useState(initialGuestName);
   const [attending, setAttending] = useState('yes');
   const [guestCount, setGuestCount] = useState('2');
   const [blessing, setBlessing] = useState('');

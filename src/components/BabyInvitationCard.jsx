@@ -12,7 +12,7 @@ import {
   Flame
 } from 'lucide-react';
 
-export function BabyInvitationCard({ onOpenRsvp: _onOpenRsvp }) {
+export function BabyInvitationCard({ onOpenRsvp: _onOpenRsvp, guestName = '' }) {
   const [_copiedAddress, setCopiedAddress] = useState(false);
 
   // Dynamic real-time countdown to Sunday, 1st November 2026, 11:30 AM IST
@@ -49,8 +49,9 @@ export function BabyInvitationCard({ onOpenRsvp: _onOpenRsvp }) {
   };
 
   const _handleWhatsAppShare = () => {
+    const greeting = guestName ? `Dear ${guestName},\n\n` : '';
     const text = encodeURIComponent(
-      `👶 Warm Invitation to our Baby's Naamkaran & Cradle Ceremony (नामकरण सोहळा)!\n\n` +
+      `${greeting}👶 Warm Invitation to our Baby's Naamkaran & Cradle Ceremony (नामकरण सोहळा)!\n\n` +
       `📅 Date: Sunday, 1st November 2026 | 11:30 AM Onwards\n` +
       `🏛️ Venue: Venkateshwara MultiPurpose Hall, Solapur\n\n` +
       `📍 Google Maps Location:\n${VENUE_DATA.googleMapsUrl}\n\n` +
@@ -71,6 +72,34 @@ export function BabyInvitationCard({ onOpenRsvp: _onOpenRsvp }) {
 
   return (
     <div className="relative w-full max-w-6xl mx-auto my-3 sm:my-5 px-3 sm:px-4 z-20">
+
+      {/* ================= PERSONALIZED GUEST INVITATION HEADER (NO CARD CONTAINER, CENTERED) ================= */}
+      {guestName && (
+        <div className="w-full text-center pt-1 pb-5 sm:pb-7 px-3 animate-card-entry select-none">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 backdrop-blur-xs border border-pink-200/80 shadow-2xs mb-2.5">
+            <Sparkles className="w-3.5 h-3.5 text-[#E11D48]" />
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#831843]">
+              ॥ सस्नेह निमंत्रण • Cordially Inviting ॥
+            </span>
+            <Sparkles className="w-3.5 h-3.5 text-[#E11D48]" />
+          </div>
+
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#7A283C] tracking-wide font-serif py-1 drop-shadow-xs">
+            {guestName}
+          </h1>
+
+          <p className="text-xs sm:text-sm text-stone-600 max-w-lg mx-auto font-medium leading-relaxed mt-1">
+            You & your family are warmly invited to grace our baby's Naamkaran & Cradle Ceremony and shower your auspicious blessings! 🙏
+          </p>
+
+          {/* Elegant Auspicious Divider */}
+          <div className="flex items-center justify-center gap-3 mt-4 opacity-75">
+            <div className="h-[1px] w-16 sm:w-28 bg-gradient-to-r from-transparent to-[#7A283C]/40" />
+            <span className="text-xs text-[#7A283C] font-semibold">✦ ॐ ✦</span>
+            <div className="h-[1px] w-16 sm:w-28 bg-gradient-to-l from-transparent to-[#7A283C]/40" />
+          </div>
+        </div>
+      )}
 
       {/* 2-Column Layout: Background-less Left + Seamlessly Blended Right */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-stretch animate-card-entry">
