@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Sparkles, Flame, PartyPopper } from 'lucide-react';
-
-export function NameRevealBanner({ isCountdownZero = false, babyName = "Om (ॐ)" }) {
+//Om (ॐ)
+export function NameRevealBanner({ isCountdownZero = false, babyName = "" }) {
   const [inlineAlert, setInlineAlert] = useState(false);
   const [confettiKey, setConfettiKey] = useState(0);
 
