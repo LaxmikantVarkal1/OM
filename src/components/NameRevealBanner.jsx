@@ -43,9 +43,8 @@ export function NameRevealBanner({ isCountdownZero = false, babyName = "Om (ॐ)
         onKeyDown={(e) => {
           if (e.key === 'Enter' || e.key === ' ') handlePlateClick();
         }}
-        className={`group relative cursor-pointer overflow-hidden rounded-2xl p-0.5 bg-gradient-to-r from-amber-300 via-amber-500 to-amber-700 shadow-md hover:shadow-lg transition-all duration-300 active:scale-[0.99] ${
-          isRevealed ? 'animate-celebration-pulse' : 'animate-golden-glow'
-        }`}
+        className={`group relative cursor-pointer overflow-hidden rounded-2xl p-0.5 bg-gradient-to-r from-amber-300 via-amber-500 to-amber-700 shadow-md hover:shadow-lg transition-all duration-300 active:scale-[0.99] ${isRevealed ? 'animate-celebration-pulse' : 'animate-golden-glow'
+          }`}
       >
         {/* Inner Name Plate Frame */}
         <div className="relative rounded-[14px] px-4 py-3.5 sm:py-4 overflow-hidden border border-amber-300/80 bg-gradient-to-r from-[#4A0E17] via-[#7A283C] via-[#9A3412] via-[#831843] to-[#4A0E17] animate-fluid-gradient text-white text-center">
@@ -86,7 +85,7 @@ export function NameRevealBanner({ isCountdownZero = false, babyName = "Om (ॐ)
 
           {/* Plate Content */}
           <div className="relative z-10 flex flex-col items-center justify-center space-y-1">
-            
+
             {/* Top Auspicious Header */}
             <div className="flex items-center gap-1.5 opacity-90">
               <Flame className="w-3 h-3 text-amber-400 fill-amber-400" />

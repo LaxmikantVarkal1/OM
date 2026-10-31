@@ -14,5 +14,5 @@ export const VENUE_DATA = {
   directionsUrl:
     "https://www.google.com/maps/dir/?api=1&destination=17.6498277,75.9534523",
   phone: "+91 98220 00000",
-  timing: "10:30 AM Onwards",
+  timing: "1:00 PM Onwards",
 };
