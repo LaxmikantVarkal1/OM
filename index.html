@@ -7,14 +7,21 @@
   <link rel="canonical" href="https://laxmikantvarkal1.github.io/baby-namkaran/">
   <title>Baby Naamkaran Ceremony Invitation</title>
   <script>
-    window.location.replace("https://laxmikantvarkal1.github.io/baby-namkaran/");
+    var query = window.location.search || "";
+    window.location.replace("https://laxmikantvarkal1.github.io/baby-namkaran/" + query);
   </script>
 </head>
 <body style="margin:0; background:#FAF7F2; display:flex; flex-direction:column; justify-content:center; align-items:center; min-height:100vh; font-family:'Poppins', sans-serif; color:#7A283C; text-align:center;">
   <div style="padding:20px;">
     <h2 style="margin:0 0 10px 0; font-size:20px;">॥ श्री गणेशाय नमः ॥</h2>
     <p style="margin:0; font-size:14px; color:#5C4549;">Opening Baby Naamkaran Ceremony...</p>
-    <a href="https://laxmikantvarkal1.github.io/baby-namkaran/" style="display:inline-block; margin-top:15px; color:#7A283C; font-weight:bold; text-decoration:underline;">Click here if not redirected automatically</a>
+    <a id="redirect-link" href="https://laxmikantvarkal1.github.io/baby-namkaran/" style="display:inline-block; margin-top:15px; color:#7A283C; font-weight:bold; text-decoration:underline;">Click here if not redirected automatically</a>
   </div>
+  <script>
+    if (window.location.search) {
+      var link = document.getElementById('redirect-link');
+      if (link) link.href = "https://laxmikantvarkal1.github.io/baby-namkaran/" + window.location.search;
+    }
+  </script>
 </body>
 </html>
